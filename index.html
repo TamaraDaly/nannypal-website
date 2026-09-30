@@ -258,7 +258,7 @@ footer p { color: var(--muted); }
       <input type="email" id="email" name="email" placeholder="Your email address" autocomplete="email">
       <button class="btn" type="submit">Join the waitlist</button>
     </form>
-    <p class="form-note" id="form-note">No spam. One email at launch.</p>
+    <p class="form-note" id="form-note" data-default="No spam. One email at launch.">No spam. One email at launch.</p>
   </div>
   <div class="hero-img">
     <picture><source srcset="assets/hero-phones.webp" type="image/webp"><img src="assets/hero-phones.png" width="770" height="983" alt="Two iPhones: the weekly meal plan with recipe photos, and a recipe step shown in English for the parent and in Tagalog for the helper"></picture>
@@ -341,13 +341,18 @@ footer p { color: var(--muted); }
     <p>The free trial unlocks every feature, needs no payment details and never renews on its own. Plans are weekly or monthly, with pricing announced at launch.</p></div>
     <div class="plans">
       <div class="plan"><h3>Basic</h3><p>AI-suggested recipes, meal planning, shopping lists and bilingual helper mode. One helper.</p></div>
-      <div class="plan"><h3>Plus</h3><p>Everything in Basic, plus creating your own recipes. One helper.</p></div>
+      <div class="plan"><h3>Plus</h3><p>Everything in Basic, plus creating your own recipes.</p></div>
       <div class="plan"><h3>Pro</h3><p>Everything in Plus, plus importing recipes from links, captions and screenshots. Up to two helpers.</p></div>
     </div>
     <div class="cta-band">
       <h2>Be first to know when it's ready</h2>
-      <p>Leave your email at the top of this page and we'll send one message at launch.</p>
-      <div><a class="btn" href="#top" onclick="document.getElementById('email').focus();return false;">Join the waitlist</a></div>
+      <p>Leave your email and we'll send one message at launch.</p>
+      <form class="signup" novalidate style="margin-top:6px">
+        <label for="email2" style="position:absolute;left:-9999px">Email address</label>
+        <input type="email" id="email2" name="email" placeholder="Your email address" autocomplete="email">
+        <button class="btn" type="submit">Join the waitlist</button>
+      </form>
+      <p class="form-note" style="margin:0"></p>
     </div>
   </div>
 </section>
@@ -378,12 +383,12 @@ footer p { color: var(--muted); }
 (function () {
   // Waitlist, sent through Web3Forms (free). Paste your access key between the quotes below.
   var ACCESS_KEY = "822f108e-2a1a-465f-b839-bb23d1baaba3";
-  var form = document.getElementById("waitlist");
-  if (form) {
+  document.querySelectorAll("form.signup").forEach(function (form) {
+    var note = form.nextElementSibling;
+    var input = form.querySelector('input[type="email"]');
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var note = document.getElementById("form-note");
-      var email = document.getElementById("email").value.trim();
+      var email = input.value.trim();
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { note.textContent = "Add a valid email address first."; return; }
       if (!ACCESS_KEY) { note.textContent = "The waitlist isn't switched on yet. Check back soon."; return; }
       note.textContent = "Sending...";
@@ -396,7 +401,7 @@ footer p { color: var(--muted); }
         .then(function (d) { if (!d.success) { throw new Error("bad"); } note.textContent = "You're on the list. We'll email you at launch."; form.reset(); })
         .catch(function () { note.textContent = "That didn't go through. Please try again in a moment."; });
     });
-  }
+  });
 })();
 </script>
 <script>
