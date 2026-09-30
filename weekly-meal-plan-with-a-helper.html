@@ -220,12 +220,32 @@ footer p { color: var(--muted); }
 .social a:hover { color: var(--lav); border-color: var(--lav); }
 .social span[aria-disabled="true"] { opacity: 0.55; cursor: default; }
 .legal a { color: var(--muted); }
+
+/* mobile menu */
+.nav-toggle { display: none; background: none; border: 1.5px solid var(--line); border-radius: 12px; width: 44px; height: 44px; padding: 0; cursor: pointer; color: var(--ink); align-items: center; justify-content: center; }
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px; content: ""; position: relative; transition: transform .2s, top .2s, background .2s; }
+.nav-toggle span::before { position: absolute; top: -6px; }
+.nav-toggle span::after { position: absolute; top: 6px; }
+.site-header.open .nav-toggle span { background: transparent; }
+.site-header.open .nav-toggle span::before { top: 0; transform: rotate(45deg); }
+.site-header.open .nav-toggle span::after { top: 0; transform: rotate(-45deg); }
+@media (max-width: 640px) {
+  .site-header { position: relative; flex-wrap: nowrap; }
+  .nav-toggle { display: inline-flex; }
+  .nav { display: none; position: absolute; top: calc(100% - 4px); left: 20px; right: 20px; z-index: 20; flex-direction: column; align-items: stretch; gap: 2px; padding: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 14px 30px rgba(40,30,100,.14); font-size: 1.05rem; }
+  .site-header.open .nav { display: flex; }
+  .nav a { padding: 12px 14px; border-bottom: 0; border-radius: 10px; }
+  .nav a:hover, .nav a[aria-current="page"] { background: var(--lav-soft); }
+  .nav .pill { margin-top: 6px; text-align: center; padding: 13px 16px; }
+  .nav .pill:hover { background: var(--lav-ink); }
+}
 </style>
 </head>
 <body id="top">
 <header class="site-header wrap">
   <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>NannyPal</a>
-  <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="guides.html" aria-current="page">Guides</a><a href="faq.html">FAQ</a><a class="pill" href="index.html#waitlist">Join the waitlist</a></nav>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  <nav class="nav" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="guides.html" aria-current="page">Guides</a><a href="faq.html">FAQ</a><a class="pill" href="index.html#waitlist">Join the waitlist</a></nav>
 </header>
 <main class="wrap"><div class="narrow">
 <p class="crumbs"><a href="index.html">Home</a> / <a href="guides.html">Guides</a></p>
@@ -292,5 +312,11 @@ footer p { color: var(--muted); }
   <div><h4>The app</h4><ul><li><a href="index.html#how">How it works</a></li><li><a href="index.html#languages">Languages</a></li><li><a href="faq.html">FAQ</a></li><li><a href="index.html#waitlist">Join the waitlist</a></li></ul></div>
   <p class="legal" id="disclaimer">Coming first to iPhone. Our baby and toddler guidance is based on NHS advice, but NannyPal isn't affiliated with or endorsed by the NHS. Recipes and suggestions are made with the help of AI, and AI can get things wrong. Please double-check anything that matters, especially allergens, ingredients and food textures for babies, against the NHS website or with your GP or health visitor. Guides are general information for households, not medical advice. Privacy Policy and Terms of Use will be published before launch. Questions or spotted a mistake? <a href="mailto:support@getnannypal.app">support@getnannypal.app</a></p>
 </footer>
+<script>
+(function(){var h=document.querySelector(".site-header"),b=h&&h.querySelector(".nav-toggle");if(!b)return;
+b.addEventListener("click",function(){var o=h.classList.toggle("open");b.setAttribute("aria-expanded",o);});
+h.querySelectorAll(".nav a").forEach(function(a){a.addEventListener("click",function(){h.classList.remove("open");b.setAttribute("aria-expanded","false");});});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){h.classList.remove("open");b.setAttribute("aria-expanded","false");}});})();
+</script>
 </body>
 </html>
