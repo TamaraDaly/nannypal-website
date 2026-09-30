@@ -200,6 +200,26 @@ footer p { color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
 
+/* hero image, flags, quieter guides band, footer icons */
+.hero-img { justify-self: center; text-align: center; }
+.hero-img img { width: 100%; max-width: 400px; height: auto; display: block; margin-inline: auto; }
+.hero-img .caption { margin-top: 4px; }
+.flag { width: 22px; height: auto; border-radius: 3px; margin-right: 8px; flex: none; }
+.lang-grid span { display: inline-flex; align-items: center; }
+.disclaimer-line { font-size: 0.88rem; color: var(--muted); }
+.guides-quiet { padding-block: 44px; }
+.guides-quiet .section-head { margin-bottom: 18px; gap: 6px; }
+.guides-quiet h2 { font-size: 1.3rem; }
+.guides-quiet .section-head p:not(.eyebrow) { font-size: 0.95rem; }
+.guides-quiet .guide-item { padding-block: 14px; gap: 2px; }
+.guides-quiet .guide-item h3 { font-size: 1.05rem; }
+.guides-quiet .guide-item p { font-size: 0.92rem; }
+.more-link { margin-top: 16px; font-size: 0.95rem; }
+.social { display: flex; gap: 10px; margin-top: 16px; }
+.social a, .social span { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; color: var(--muted); }
+.social a:hover { color: var(--lav); border-color: var(--lav); }
+.social span[aria-disabled="true"] { opacity: 0.55; cursor: default; }
+.legal a { color: var(--muted); }
 </style>
 </head>
 <body id="top">
@@ -219,23 +239,10 @@ footer p { color: var(--muted); }
       <button class="btn" type="submit">Join the waitlist</button>
     </form>
     <p class="form-note" id="form-note">Coming first to iPhone. One email when it's ready, nothing else.</p>
-    <div class="badge-row"><span class="chip">Babies and kids first</span><span class="chip teal">Recipes in simple words</span><span class="chip">Parent + helper modes</span><span class="chip">3-day free trial</span></div>
   </div>
-  <div class="demo" aria-label="Example of one recipe step shown to a parent and to a helper">
-    <div class="step-card parent">
-      <div class="who"><span class="who-tag">Parent &middot; English</span><span class="dish">Shakshuka &middot; step 3 of 7</span></div>
-      <p class="step-text">Slice the onion thinly. Cook on medium heat for 5 minutes.</p>
-    </div>
-    <div class="step-card helper">
-      <div class="who"><span class="who-tag" id="helper-lang">Helper &middot; Tagalog</span><span class="dish">Same step, same dish</span></div>
-      <p class="step-text" id="helper-text" lang="tl">Hiwain nang manipis ang sibuyas. Iluto sa katamtamang apoy sa loob ng 5 minuto.</p>
-      <div class="lang-tabs" role="group" aria-label="Preview language">
-        <button type="button" data-lang="tl" aria-pressed="true">Tagalog</button>
-        <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
-        <button type="button" data-lang="hi" aria-pressed="false">हिन्दी</button>
-      </div>
-    </div>
-    <p class="caption">An illustration of how one step reaches each person. Final app screens may look different.</p>
+  <div class="hero-img">
+    <picture><source srcset="assets/hero-phone.webp" type="image/webp"><img src="assets/hero-phone.png" width="1080" height="1800" alt="A hand holding an iPhone that shows one recipe step twice: in English for the parent and in Tagalog for the helper"></picture>
+    <p class="caption"><em>Illustration only. Final app screens may look different.</em></p>
   </div>
 </div>
 
@@ -243,9 +250,9 @@ footer p { color: var(--muted); }
   <div class="wrap">
     <div class="section-head"><p class="eyebrow">How it works</p><h2>Plan once. Everyone knows what's for dinner.</h2></div>
     <ol class="steps">
-      <li><h3>You plan the week</h3><p>Fill the week's meals yourself or let the app suggest them. Suggestions skip your family's allergens and avoid repeating the same main meal.</p></li>
-      <li><h3>Your helper gets it in their language</h3><p>Each recipe is rewritten in short, simple steps, then shown in English plus the language your helper chose. The shopping list follows the same plan.</p></li>
-      <li><h3>Dinner comes out the way you pictured it</h3><p>Fewer "what did you mean?" messages, fewer wrong groceries and less cooking from memory.</p></li>
+      <li><h3>You plan the week</h3><p>Fill it in yourself or let the app suggest meals. Allergens are skipped automatically.</p></li>
+      <li><h3>Your helper gets it in their language</h3><p>Simple steps, in English plus the language they chose. The shopping list follows the plan.</p></li>
+      <li><h3>Dinner comes out the way you pictured it</h3><p>Fewer "what did you mean?" messages.</p></li>
     </ol>
   </div>
 </section>
@@ -253,82 +260,69 @@ footer p { color: var(--muted); }
 <section>
   <div class="wrap">
     <div class="section-head"><p class="eyebrow">What makes it different</p><h2>Recipes your helper can actually follow</h2>
-    <p>Most recipes assume you already know how to cook the dish. NannyPal rewrites them in plain, simple language first, then puts them in your helper's language.</p></div>
+    <p>Most recipes assume you already know how to cook the dish, and all the fancy culinary lingo that comes with it. NannyPal rewrites them in plain, simple language first, then puts them in your helper's language.</p></div>
     <div class="two-col">
       <div class="card"><span class="who-tag" style="justify-self:start;background:var(--line);color:var(--muted)">Before</span>
         <p class="step-text" style="color:var(--muted)">Saut&eacute; the diced onion until translucent, then deglaze with a splash of stock and reduce.</p></div>
       <div class="card helper-c"><span class="who-tag" style="justify-self:start;background:var(--teal-soft);color:var(--teal-ink)">After, in simple words</span>
         <p class="step-text">1. Cook the onion in oil for 5 minutes.<br>2. Add a little stock.<br>3. Stir until it is half as much.</p></div>
     </div>
-    <p class="caption" style="margin-top:14px">An example of the kind of rewriting the app does. Wording in the final app may differ.</p>
+    <p class="caption" style="margin-top:14px"><em>An example of the kind of rewriting the app does. Wording in the final app may differ.</em></p>
   </div>
 </section>
 
 <section class="tint">
   <div class="wrap two-col" style="align-items:start">
     <div class="section-head" style="margin:0"><p class="eyebrow">Who it's for</p><h2>Babies and kids first. Adults too.</h2>
-    <p>NannyPal starts with the smallest people in your house: what they eat, when they eat it and what they can't have. The same plan then covers everyone else at the table.</p></div>
+    <p>NannyPal starts with the smallest people in your house: what they eat, when they eat it and what they can't have. The same plan then covers everyone else at the table.</p>
+    <p class="disclaimer-line">Baby and toddler guidance is based on NHS advice. AI can get things wrong, so please double-check allergens and ingredients. <a href="#disclaimer">More below.</a></p></div>
     <div class="card"><ul class="tick">
-      <li>Family allergens saved once and avoided in automatic suggestions</li>
-      <li>Meal slots you set yourself, including snacks</li>
-      <li>Adults' meals and family dinners sit in the same weekly plan</li>
-      <li>One shopping list for the whole household</li></ul></div>
+      <li>Family allergens saved once and skipped in suggestions</li>
+      <li>Meal slots you set yourself, snacks included</li>
+      <li>Adults' meals and family dinners in the same weekly plan</li>
+      <li>One shopping list for the household, which you can assign</li></ul></div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow">Two modes, one plan</p><h2>Built for the person cooking and the person planning</h2>
-    <p>Purple is you. Teal is your helper. The colours stay the same across the app, so nobody edits the wrong thing.</p></div>
+    <div class="section-head"><p class="eyebrow">Two modes, one plan</p><h2>Built for the person cooking and the person planning</h2></div>
     <div class="two-col">
-      <div class="card parent-c"><h3>Parent mode</h3><p>Everything you need to run the kitchen calendar.</p>
-        <ul class="tick"><li>Weekly plan with breakfast, lunch, dinner and snacks</li><li>Recipe cookbook that belongs to your household</li><li>Shopping list built from the plan</li><li>Your family's allergens and meal times in one place</li></ul></div>
-      <div class="card helper-c"><h3>Helper mode</h3><p>A simpler view with only what's needed to cook and shop.</p>
-        <ul class="tick"><li>Today's meals up front</li><li>Step-by-step recipes with photos</li><li>Everything in English plus one chosen language</li><li>Like or dislike a dish, and send a question or note back to you</li></ul></div>
+      <div class="card parent-c"><h3>Your view</h3><p>Everything in one place: you're in charge of the plan, recipes, allergens and delegating the shopping.</p></div>
+      <div class="card helper-c"><h3>Their view</h3><p>A simpler version with just what's needed: today's meals, simplified step-by-step recipes and the shopping list, without clutter.</p></div>
     </div>
   </div>
 </section>
 
-<section id="languages">
+<section id="languages" class="tint">
   <div class="wrap">
     <div class="section-head"><p class="eyebrow">Languages</p><h2>Ten helper languages to start</h2>
-    <p>Each helper gets English plus one language, picked once when you create their profile. Arabic screens are fully right to left.</p></div>
-    <div class="lang-grid" aria-label="Helper languages"><span>English</span><span>Tagalog</span><span>العربية Arabic</span><span>हिन्दी Hindi</span><span>සිංහල Sinhala</span><span>नेपाली Nepali</span><span>اردو Urdu</span><span>Luganda</span><span>Bahasa Indonesia</span><span>ไทย Thai</span></div>
+    <p>Each helper gets English plus one language, picked once when you create their profile.</p></div>
+    <div class="lang-grid" aria-label="Helper languages"><span><img class="flag" src="assets/flags/gb.svg" alt="" width="22" height="15">English</span><span><img class="flag" src="assets/flags/ph.svg" alt="" width="22" height="15">Tagalog</span><span><img class="flag" src="assets/flags/ae.svg" alt="" width="22" height="15">العربية Arabic</span><span><img class="flag" src="assets/flags/in.svg" alt="" width="22" height="15">हिन्दी Hindi</span><span><img class="flag" src="assets/flags/lk.svg" alt="" width="22" height="15">සිංහල Sinhala</span><span><img class="flag" src="assets/flags/np.svg" alt="" width="22" height="15">नेपाली Nepali</span><span><img class="flag" src="assets/flags/pk.svg" alt="" width="22" height="15">اردو Urdu</span><span><img class="flag" src="assets/flags/ug.svg" alt="" width="22" height="15">Luganda</span><span><img class="flag" src="assets/flags/id.svg" alt="" width="22" height="15">Bahasa Indonesia</span><span><img class="flag" src="assets/flags/th.svg" alt="" width="22" height="15">ไทย Thai</span></div>
     <p style="margin:26px 0 12px;color:var(--muted)">And for you, the app comes in:</p>
-    <div class="lang-grid parent-l"><span>English</span><span>العربية Arabic</span><span>Français</span><span>Español</span><span>हिन्दी Hindi</span><span>اردو Urdu</span><span>Русский</span></div>
+    <div class="lang-grid parent-l"><span><img class="flag" src="assets/flags/gb.svg" alt="" width="22" height="15">English</span><span><img class="flag" src="assets/flags/ae.svg" alt="" width="22" height="15">العربية Arabic</span><span><img class="flag" src="assets/flags/fr.svg" alt="" width="22" height="15">Français</span><span><img class="flag" src="assets/flags/es.svg" alt="" width="22" height="15">Español</span><span><img class="flag" src="assets/flags/in.svg" alt="" width="22" height="15">हिन्दी Hindi</span><span><img class="flag" src="assets/flags/pk.svg" alt="" width="22" height="15">اردو Urdu</span><span><img class="flag" src="assets/flags/ru.svg" alt="" width="22" height="15">Русский</span></div>
   </div>
 </section>
 
-<section class="tint">
+<section>
   <div class="wrap two-col" style="align-items:start">
     <div class="section-head" style="margin:0"><p class="eyebrow">Your own cookbook</p><h2>Bring in the recipes you already love</h2>
     <p>Found a dish on a website or saved a caption you liked? Add it to your household cookbook and NannyPal rewrites it into short, clear steps your helper can follow.</p></div>
     <div class="card"><ul class="tick">
-      <li>Import from a web link, or paste a caption or screenshot</li>
-      <li>Instructions are rewritten in simple steps, not copied word for word</li>
-      <li>The original creator is credited and linked</li>
-      <li>Recipes are for your household only and can't be shared or sold from the app</li></ul></div>
+      <li>Import from a link, caption or screenshot</li>
+      <li>Rewritten in simple steps, never copied</li>
+      <li>Original creator credited and linked, for your household only</li></ul></div>
   </div>
 </section>
 
 <section id="plans">
   <div class="wrap">
     <div class="section-head"><p class="eyebrow">Plans</p><h2>Try everything free for 3 days</h2>
-    <p>The free trial unlocks every feature, needs no payment details and never renews on its own. Pricing will be announced at launch. Plans are weekly or monthly.</p></div>
+    <p>The free trial unlocks every feature, needs no payment details and never renews on its own. Plans are weekly or monthly, with pricing announced at launch.</p></div>
     <div class="plans">
       <div class="plan"><h3>Basic</h3><p>AI-suggested recipes, meal planning, shopping lists and bilingual helper mode. One helper.</p></div>
       <div class="plan"><h3>Plus</h3><p>Everything in Basic, plus creating your own recipes. One helper.</p></div>
       <div class="plan"><h3>Pro</h3><p>Everything in Plus, plus importing recipes from links, captions and screenshots. Up to two helpers.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="guides" class="tint">
-  <div class="wrap">
-    <div class="section-head"><p class="eyebrow">Help for the kitchen</p><h2>Free guides while you wait</h2>
-    <p>Practical reading for households that cook with help, whether or not you ever use the app.</p></div>
-    <div class="guide-list">
-      <a class="guide-item" href="weekly-meal-plan-with-a-helper.html"><h3>How to plan a week of meals with a domestic helper</h3><p>A 20-minute weekly routine, a sample week of dinners, and how to keep the shopping list from turning into a guessing game.</p><span class="meta">6 min read</span></a><a class="guide-item" href="cooking-instructions-for-a-helper.html"><h3>How to give cooking instructions to a helper who doesn&#x27;t read English well</h3><p>Why written English recipes often fail, and seven small changes that make a dish come out the way you pictured it.</p><span class="meta">6 min read</span></a><a class="guide-item" href="allergies-and-helpers-in-the-kitchen.html"><h3>Food allergies and a helper in the kitchen: a simple labelling routine</h3><p>A shared allergen list, labelled containers and one habit that catches most mistakes. General guidance, not medical advice.</p><span class="meta">5 min read</span></a>
     </div>
     <div class="cta-band">
       <h2>Be first to know when it's ready</h2>
@@ -337,13 +331,28 @@ footer p { color: var(--muted); }
     </div>
   </div>
 </section>
+
+<section id="guides" class="tint guides-quiet">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow">Free reading, no app needed</p><h2>Free guides while you wait</h2>
+    <p>Practical reading for households that cook with help, whether or not you ever use the app.</p></div>
+    <div class="guide-list">
+      <a class="guide-item" href="first-bites-what-to-feed-your-baby.html"><h3>First bites: what to feed your baby, and what to skip</h3><p>When to start, which textures come first, the foods to leave out, and how to introduce allergens with care.</p><span class="meta">5 min read</span></a><a class="guide-item" href="cooking-for-a-toddler-who-says-no.html"><h3>Cooking for a toddler who says no to everything</h3><p>Why they refuse, what to do at the table, and how to brief your helper so mealtimes stop being a battle.</p><span class="meta">5 min read</span></a><a class="guide-item" href="weekly-meal-plan-with-a-helper.html"><h3>How to plan a week of meals with a domestic helper</h3><p>A 20-minute weekly routine, a sample week of dinners, and how to keep the shopping list from turning into a guessing game.</p><span class="meta">6 min read</span></a><a class="guide-item" href="cooking-instructions-for-a-helper.html"><h3>How to give cooking instructions to a helper who doesn&#x27;t read English well</h3><p>Why written English recipes often fail, and seven small changes that make a dish come out the way you pictured it.</p><span class="meta">6 min read</span></a><a class="guide-item" href="allergies-and-helpers-in-the-kitchen.html"><h3>Food allergies and a helper in the kitchen: a simple labelling routine</h3><p>A shared allergen list, labelled containers and one habit that catches most mistakes. General guidance, not medical advice.</p><span class="meta">5 min read</span></a>
+    </div>
+    <p class="more-link"><a href="guides.html">All guides &rarr;</a></p>
+  </div>
+</section>
 </main>
 <footer class="wrap">
   <div><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>NannyPal</a>
-  <p style="margin-top:10px">Your plan, in their language.</p></div>
-  <div><h4>Read</h4><ul><li><a href="weekly-meal-plan-with-a-helper.html">How to plan a week of meals with a domestic helper</a></li><li><a href="cooking-instructions-for-a-helper.html">How to give cooking instructions to a helper who doesn&#x27;t read English well</a></li><li><a href="allergies-and-helpers-in-the-kitchen.html">Food allergies and a helper in the kitchen</a></li><li><a href="guides.html">All guides</a></li></ul></div>
+  <p style="margin-top:10px">Your plan, in their language.</p>
+  <div class="social">
+    <a href="mailto:support@getnannypal.app" aria-label="Email support@getnannypal.app" title="support@getnannypal.app"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg></a>
+    <span aria-label="Instagram (coming soon)" title="Instagram, coming soon" aria-disabled="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></span>
+  </div></div>
+  <div><h4>Read</h4><ul><li><a href="first-bites-what-to-feed-your-baby.html">First bites: what to feed your baby, and what to skip</a></li><li><a href="cooking-for-a-toddler-who-says-no.html">Cooking for a toddler who says no to everything</a></li><li><a href="weekly-meal-plan-with-a-helper.html">How to plan a week of meals with a domestic helper</a></li><li><a href="cooking-instructions-for-a-helper.html">How to give cooking instructions to a helper who doesn&#x27;t read English well</a></li><li><a href="allergies-and-helpers-in-the-kitchen.html">Food allergies and a helper in the kitchen</a></li><li><a href="guides.html">All guides</a></li></ul></div>
   <div><h4>The app</h4><ul><li><a href="index.html#how">How it works</a></li><li><a href="index.html#languages">Languages</a></li><li><a href="faq.html">FAQ</a></li><li><a href="index.html#waitlist">Join the waitlist</a></li></ul></div>
-  <p class="legal">Coming first to iPhone. Guides are general information for households and are not medical advice. Privacy Policy and Terms of Use will be published before launch.</p>
+  <p class="legal" id="disclaimer">Coming first to iPhone. Our baby and toddler guidance is based on NHS advice, but NannyPal isn't affiliated with or endorsed by the NHS. Recipes and suggestions are made with the help of AI, and AI can get things wrong. Please double-check anything that matters, especially allergens, ingredients and food textures for babies, against the NHS website or with your GP or health visitor. Guides are general information for households, not medical advice. Privacy Policy and Terms of Use will be published before launch. Questions or spotted a mistake? <a href="mailto:support@getnannypal.app">support@getnannypal.app</a></p>
 </footer>
 <script>
 (function () {
@@ -361,24 +370,6 @@ footer p { color: var(--muted); }
       fetch(WAITLIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email }) })
         .then(function (r) { if (!r.ok) { throw new Error("bad"); } note.textContent = "You're on the list. We'll email you at launch."; form.reset(); })
         .catch(function () { note.textContent = "That didn't go through. Please try again in a moment."; });
-    });
-  }
-  var text = document.getElementById("helper-text");
-  var tag = document.getElementById("helper-lang");
-  var tabs = document.querySelectorAll(".lang-tabs button");
-  var copy = {
-    tl: { label: "Helper · Tagalog", dir: "ltr", t: "Hiwain nang manipis ang sibuyas. Iluto sa katamtamang apoy sa loob ng 5 minuto." },
-    ar: { label: "Helper · العربية", dir: "rtl", t: "قطّع البصل شرائح رفيعة. اطبخه على نار متوسطة لمدة 5 دقائق." },
-    hi: { label: "Helper · हिन्दी", dir: "ltr", t: "प्याज़ को पतला काटें। मध्यम आँच पर 5 मिनट पकाएँ।" }
-  };
-  if (text && tag) {
-    tabs.forEach(function (b) {
-      b.addEventListener("click", function () {
-        var c = copy[b.getAttribute("data-lang")];
-        text.textContent = c.t; text.setAttribute("dir", c.dir); text.setAttribute("lang", b.getAttribute("data-lang"));
-        tag.textContent = c.label;
-        tabs.forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
-      });
     });
   }
 })();

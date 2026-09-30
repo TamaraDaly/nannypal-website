@@ -200,6 +200,26 @@ footer p { color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
 
+/* hero image, flags, quieter guides band, footer icons */
+.hero-img { justify-self: center; text-align: center; }
+.hero-img img { width: 100%; max-width: 400px; height: auto; display: block; margin-inline: auto; }
+.hero-img .caption { margin-top: 4px; }
+.flag { width: 22px; height: auto; border-radius: 3px; margin-right: 8px; flex: none; }
+.lang-grid span { display: inline-flex; align-items: center; }
+.disclaimer-line { font-size: 0.88rem; color: var(--muted); }
+.guides-quiet { padding-block: 44px; }
+.guides-quiet .section-head { margin-bottom: 18px; gap: 6px; }
+.guides-quiet h2 { font-size: 1.3rem; }
+.guides-quiet .section-head p:not(.eyebrow) { font-size: 0.95rem; }
+.guides-quiet .guide-item { padding-block: 14px; gap: 2px; }
+.guides-quiet .guide-item h3 { font-size: 1.05rem; }
+.guides-quiet .guide-item p { font-size: 0.92rem; }
+.more-link { margin-top: 16px; font-size: 0.95rem; }
+.social { display: flex; gap: 10px; margin-top: 16px; }
+.social a, .social span { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; color: var(--muted); }
+.social a:hover { color: var(--lav); border-color: var(--lav); }
+.social span[aria-disabled="true"] { opacity: 0.55; cursor: default; }
+.legal a { color: var(--muted); }
 </style>
 </head>
 <body id="top">
@@ -214,6 +234,8 @@ footer p { color: var(--muted); }
 <p class="eyebrow" style="margin-bottom:20px">6 min read &middot; Updated 30 September 2026</p>
 
 <p class="lead">If someone else does the cooking, the meal plan is the way you say what you want without saying it every day. Here is a routine that takes about twenty minutes a week.</p>
+
+<div class="note"><strong>Please double-check.</strong> Our baby and toddler guidance is based on NHS advice, but NannyPal isn't affiliated with or endorsed by the NHS. This guide is made with the help of AI, which can get things wrong, so check anything that matters, especially allergens and food textures for babies, against the <a href="https://www.nhs.uk/baby/weaning-and-feeding/">NHS website</a> or with your GP or health visitor. General information, not medical advice.</div>
 
 <h2>Why a plan matters more with a helper</h2>
 <p>When you cook yourself, you adjust as you go. When your helper cooks, every decision you leave open becomes a guess: what to make, what to buy, how much. A written plan turns those guesses into a list. It also gives your helper a way to plan the shopping without asking you every morning.</p>
@@ -261,10 +283,14 @@ footer p { color: var(--muted); }
 </article></div></main>
 <footer class="wrap">
   <div><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>NannyPal</a>
-  <p style="margin-top:10px">Your plan, in their language.</p></div>
-  <div><h4>Read</h4><ul><li><a href="weekly-meal-plan-with-a-helper.html">How to plan a week of meals with a domestic helper</a></li><li><a href="cooking-instructions-for-a-helper.html">How to give cooking instructions to a helper who doesn&#x27;t read English well</a></li><li><a href="allergies-and-helpers-in-the-kitchen.html">Food allergies and a helper in the kitchen</a></li><li><a href="guides.html">All guides</a></li></ul></div>
+  <p style="margin-top:10px">Your plan, in their language.</p>
+  <div class="social">
+    <a href="mailto:support@getnannypal.app" aria-label="Email support@getnannypal.app" title="support@getnannypal.app"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg></a>
+    <span aria-label="Instagram (coming soon)" title="Instagram, coming soon" aria-disabled="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></span>
+  </div></div>
+  <div><h4>Read</h4><ul><li><a href="first-bites-what-to-feed-your-baby.html">First bites: what to feed your baby, and what to skip</a></li><li><a href="cooking-for-a-toddler-who-says-no.html">Cooking for a toddler who says no to everything</a></li><li><a href="weekly-meal-plan-with-a-helper.html">How to plan a week of meals with a domestic helper</a></li><li><a href="cooking-instructions-for-a-helper.html">How to give cooking instructions to a helper who doesn&#x27;t read English well</a></li><li><a href="allergies-and-helpers-in-the-kitchen.html">Food allergies and a helper in the kitchen</a></li><li><a href="guides.html">All guides</a></li></ul></div>
   <div><h4>The app</h4><ul><li><a href="index.html#how">How it works</a></li><li><a href="index.html#languages">Languages</a></li><li><a href="faq.html">FAQ</a></li><li><a href="index.html#waitlist">Join the waitlist</a></li></ul></div>
-  <p class="legal">Coming first to iPhone. Guides are general information for households and are not medical advice. Privacy Policy and Terms of Use will be published before launch.</p>
+  <p class="legal" id="disclaimer">Coming first to iPhone. Our baby and toddler guidance is based on NHS advice, but NannyPal isn't affiliated with or endorsed by the NHS. Recipes and suggestions are made with the help of AI, and AI can get things wrong. Please double-check anything that matters, especially allergens, ingredients and food textures for babies, against the NHS website or with your GP or health visitor. Guides are general information for households, not medical advice. Privacy Policy and Terms of Use will be published before launch. Questions or spotted a mistake? <a href="mailto:support@getnannypal.app">support@getnannypal.app</a></p>
 </footer>
 </body>
 </html>
