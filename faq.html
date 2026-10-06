@@ -44,7 +44,7 @@
   --teal-soft: #DDF1EE;
   --teal-ink: #0E5B55;
   --sun: #F0B44C;
-  --btn-ink: #FFFFFF;
+  --btn-ink: #FFFFFF; --bar-shadow: rgba(31, 27, 46, 0.22);
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-arabic: "Noto Sans Arabic", "Segoe UI", "Geeza Pro", system-ui, sans-serif;
@@ -54,7 +54,7 @@
     --bg: #14121F; --surface: #1D1A2C; --ink: #F1EEFA; --muted: #A9A4C2; --line: #2E2A45;
     --lav: #7666D8; --lav-soft: #2A2450; --lav-ink: #C9C1F6;
     --teal: #2FA79D; --teal-soft: #163A38; --teal-ink: #8EDDD4;
-    --sun: #F0B44C; --btn-ink: #FFFFFF;
+    --sun: #F0B44C; --btn-ink: #FFFFFF; --bar-shadow: rgba(0, 0, 0, 0.6);
     color-scheme: dark;
   }
 }
@@ -62,12 +62,12 @@
   --bg: #14121F; --surface: #1D1A2C; --ink: #F1EEFA; --muted: #A9A4C2; --line: #2E2A45;
   --lav: #7666D8; --lav-soft: #2A2450; --lav-ink: #C9C1F6;
   --teal: #2FA79D; --teal-soft: #163A38; --teal-ink: #8EDDD4;
-  --sun: #F0B44C; --btn-ink: #FFFFFF;
+  --sun: #F0B44C; --btn-ink: #FFFFFF; --bar-shadow: rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--font-body); font-size: 17px; line-height: 1.6;
@@ -86,7 +86,9 @@ a:hover { color: var(--lav); }
 .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
 /* header */
-.site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px; }
+.site-bar { position: sticky; top: 0; z-index: 50; margin-inline: -20px; padding-inline: 20px; background: var(--bg); background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); transition: box-shadow .2s ease; }
+.site-bar.is-stuck { box-shadow: 0 1px 0 var(--line), 0 8px 18px -8px var(--bar-shadow); }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 14px; }
 .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; text-decoration: none; color: var(--ink); letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 8px; }
 .brand:hover { color: var(--ink); }
 .brand-logo { display: block; height: 40px; width: auto; }
@@ -249,11 +251,11 @@ footer p { color: var(--muted); }
 </style>
 </head>
 <body id="top">
-<header class="site-header wrap">
+<div class="site-bar"><header class="site-header wrap">
   <a class="brand" href="index.html"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/logo-header-dark.svg"><img class="brand-logo" src="assets/logo-header.svg" alt="NannyPal" width="210" height="40"></picture></a>
   <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
   <nav class="nav" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="guides.html">Guides</a><a href="faq.html" aria-current="page">FAQ</a><a class="pill" href="index.html#waitlist">Join the waitlist</a></nav>
-</header>
+</header></div>
 <main class="wrap" style="padding-block:24px 72px">
   <div class="section-head" style="margin-top:24px"><p class="eyebrow">FAQ</p><h1 style="font-size:clamp(2.1rem,6vw,3.2rem)">Questions about NannyPal</h1></div>
   <details><summary>What is NannyPal?</summary><p>NannyPal is a meal planning app for families who have a nanny, maid or other domestic helper. The parent plans meals, saves recipes and builds the shopping list. The helper sees the same plan and each recipe rewritten in simple words, step by step, in English plus the language they read best. Our main focus is meals for babies and kids, and the app works for adults&#x27; meals too.</p></details><details><summary>Is NannyPal only for babies and kids?</summary><p>No. Babies and kids come first: that&#x27;s who the planning is built around. But the same plan, recipes and shopping list work for the whole household, so parents&#x27; and other adults&#x27; meals sit alongside the children&#x27;s.</p></details><details><summary>What does &quot;simple language&quot; mean?</summary><p>Most recipes are written for people who already cook the dish, with phrases like &quot;sweat the onions&quot; or &quot;cook until translucent&quot;. NannyPal rewrites each recipe into short steps with plain words and one action per step, then shows it to your helper in English plus their own language. It helps, but it&#x27;s worth cooking a new dish together the first time.</p></details><details><summary>When can I download it?</summary><p>NannyPal is being built for iPhone first and hasn&#x27;t launched yet. Join the waitlist on the home page and we&#x27;ll email you when it&#x27;s ready. An Android version may follow after launch.</p></details><details><summary>Which languages does it support?</summary><p>Helpers can use English plus one language: Tagalog, Arabic, Hindi, Sinhala, Nepali, Urdu, Luganda, Indonesian or Thai. Parents can use the app in English, Arabic, French, Spanish, Hindi, Urdu or Russian. Arabic screens are laid out right to left.</p></details><details><summary>Can my helper pick a different language later?</summary><p>Each helper profile is set up with English plus one chosen language, and that choice is locked once the profile is created. If you need to change it, you delete the profile and create a new one. This keeps the plan and the recipes consistent for the person using them.</p></details><details><summary>Does my helper need their own account?</summary><p>The app has a Parent mode and a simpler Helper mode. Final sign-in details will be confirmed before launch, so we won&#x27;t describe them here yet.</p></details><details><summary>How much does it cost?</summary><p>Pricing will be announced at launch. Every plan starts with a 3-day free trial that unlocks all features, needs no payment details and doesn&#x27;t renew on its own. When the trial ends you choose a plan, weekly or monthly, or stop.</p></details><details><summary>What&#x27;s the difference between the plans?</summary><p>Basic gives you AI-suggested recipes. Plus adds creating your own recipes. Pro adds importing recipes from web links and from captions or screenshots you paste in. Basic and Plus support one helper; Pro supports up to two.</p></details><details><summary>Where do imported recipes come from?</summary><p>You bring the recipe: a web link, or a caption or screenshot from a post you saved. NannyPal rewrites the instructions in simple steps, credits the original and links back to it. Recipes stay in your household&#x27;s private cookbook. They are for your own use and can&#x27;t be shared or sold from the app.</p></details><details><summary>Does NannyPal handle allergies?</summary><p>You can list your family&#x27;s allergens, and automatic meal suggestions avoid them. That is a help, not a guarantee. Always read ingredient labels and follow your doctor&#x27;s advice, especially for severe allergies.</p></details><details><summary>Is my family&#x27;s information private?</summary><p>A full Privacy Policy and Terms of Use will be published before launch. We won&#x27;t make promises here that the policy hasn&#x27;t spelled out.</p></details>
@@ -276,5 +278,6 @@ b.addEventListener("click",function(){var o=h.classList.toggle("open");b.setAttr
 h.querySelectorAll(".nav a").forEach(function(a){a.addEventListener("click",function(){h.classList.remove("open");b.setAttribute("aria-expanded","false");});});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){h.classList.remove("open");b.setAttribute("aria-expanded","false");}});})();
 </script>
+<script>(function(){var b=document.querySelector(".site-bar");if(!b)return;function f(){b.classList.toggle("is-stuck",window.scrollY>8);}f();window.addEventListener("scroll",f,{passive:true});})();</script>
 </body>
 </html>

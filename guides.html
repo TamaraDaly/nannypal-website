@@ -43,7 +43,7 @@
   --teal-soft: #DDF1EE;
   --teal-ink: #0E5B55;
   --sun: #F0B44C;
-  --btn-ink: #FFFFFF;
+  --btn-ink: #FFFFFF; --bar-shadow: rgba(31, 27, 46, 0.22);
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-arabic: "Noto Sans Arabic", "Segoe UI", "Geeza Pro", system-ui, sans-serif;
@@ -53,7 +53,7 @@
     --bg: #14121F; --surface: #1D1A2C; --ink: #F1EEFA; --muted: #A9A4C2; --line: #2E2A45;
     --lav: #7666D8; --lav-soft: #2A2450; --lav-ink: #C9C1F6;
     --teal: #2FA79D; --teal-soft: #163A38; --teal-ink: #8EDDD4;
-    --sun: #F0B44C; --btn-ink: #FFFFFF;
+    --sun: #F0B44C; --btn-ink: #FFFFFF; --bar-shadow: rgba(0, 0, 0, 0.6);
     color-scheme: dark;
   }
 }
@@ -61,12 +61,12 @@
   --bg: #14121F; --surface: #1D1A2C; --ink: #F1EEFA; --muted: #A9A4C2; --line: #2E2A45;
   --lav: #7666D8; --lav-soft: #2A2450; --lav-ink: #C9C1F6;
   --teal: #2FA79D; --teal-soft: #163A38; --teal-ink: #8EDDD4;
-  --sun: #F0B44C; --btn-ink: #FFFFFF;
+  --sun: #F0B44C; --btn-ink: #FFFFFF; --bar-shadow: rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--font-body); font-size: 17px; line-height: 1.6;
@@ -85,7 +85,9 @@ a:hover { color: var(--lav); }
 .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
 /* header */
-.site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px; }
+.site-bar { position: sticky; top: 0; z-index: 50; margin-inline: -20px; padding-inline: 20px; background: var(--bg); background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px); transition: box-shadow .2s ease; }
+.site-bar.is-stuck { box-shadow: 0 1px 0 var(--line), 0 8px 18px -8px var(--bar-shadow); }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 14px; }
 .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; text-decoration: none; color: var(--ink); letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 8px; }
 .brand:hover { color: var(--ink); }
 .brand-logo { display: block; height: 40px; width: auto; }
@@ -248,11 +250,11 @@ footer p { color: var(--muted); }
 </style>
 </head>
 <body id="top">
-<header class="site-header wrap">
+<div class="site-bar"><header class="site-header wrap">
   <a class="brand" href="index.html"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/logo-header-dark.svg"><img class="brand-logo" src="assets/logo-header.svg" alt="NannyPal" width="210" height="40"></picture></a>
   <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
   <nav class="nav" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="guides.html" aria-current="page">Guides</a><a href="faq.html">FAQ</a><a class="pill" href="index.html#waitlist">Join the waitlist</a></nav>
-</header>
+</header></div>
 <main class="wrap" style="padding-block:24px 72px">
   <div class="section-head" style="margin-top:24px"><p class="eyebrow">Guides</p><h1 style="font-size:clamp(2.1rem,6vw,3.2rem)">Meal planning when someone else does the cooking</h1>
   <p>Plain, practical guides for families who work with a nanny, maid or domestic helper.</p></div>
@@ -275,5 +277,6 @@ b.addEventListener("click",function(){var o=h.classList.toggle("open");b.setAttr
 h.querySelectorAll(".nav a").forEach(function(a){a.addEventListener("click",function(){h.classList.remove("open");b.setAttribute("aria-expanded","false");});});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){h.classList.remove("open");b.setAttribute("aria-expanded","false");}});})();
 </script>
+<script>(function(){var b=document.querySelector(".site-bar");if(!b)return;function f(){b.classList.toggle("is-stuck",window.scrollY>8);}f();window.addEventListener("scroll",f,{passive:true});})();</script>
 </body>
 </html>
