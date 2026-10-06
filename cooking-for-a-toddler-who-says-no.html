@@ -89,9 +89,9 @@ a:hover { color: var(--lav); }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px; }
 .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; text-decoration: none; color: var(--ink); letter-spacing: -0.02em; display: inline-flex; align-items: center; gap: 8px; }
 .brand:hover { color: var(--ink); }
-.brand-mark { display: block; height: 30px; width: auto; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .brand-mark { filter: brightness(1.7) saturate(1.15); } }
-:root[data-theme="dark"] .brand-mark { filter: brightness(1.7) saturate(1.15); }
+.brand-logo { display: block; height: 40px; width: auto; }
+footer .brand-logo { height: 34px; }
+@media (max-width: 420px) { .brand-logo { height: 34px; } }
 .nav { display: flex; gap: 6px 22px; flex-wrap: wrap; align-items: center; font-size: 0.95rem; }
 .nav a { color: var(--ink); text-decoration: none; padding-block: 6px; border-bottom: 2px solid transparent; }
 .nav a:hover, .nav a[aria-current="page"] { border-bottom-color: var(--lav); color: var(--ink); }
@@ -250,7 +250,7 @@ footer p { color: var(--muted); }
 </head>
 <body id="top">
 <header class="site-header wrap">
-  <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-symbol.svg" alt="" width="44" height="30">NannyPal</a>
+  <a class="brand" href="index.html"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/logo-header-dark.svg"><img class="brand-logo" src="assets/logo-header.svg" alt="NannyPal" width="210" height="40"></picture></a>
   <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
   <nav class="nav" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="guides.html" aria-current="page">Guides</a><a href="faq.html">FAQ</a><a class="pill" href="index.html#waitlist">Join the waitlist</a></nav>
 </header>
@@ -327,7 +327,7 @@ footer p { color: var(--muted); }
 <div class="cta-band"><h2>A meal planner made for this</h2><p>NannyPal shares your weekly plan and recipes with your helper in the language they read best.</p><div><a class="btn" href="index.html#waitlist">Join the waitlist</a></div></div>
 </article></div></main>
 <footer class="wrap">
-  <div><a class="brand" href="index.html"><img class="brand-mark" src="assets/logo-symbol.svg" alt="" width="44" height="30">NannyPal</a>
+  <div><a class="brand" href="index.html"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/logo-header-dark.svg"><img class="brand-logo" src="assets/logo-header.svg" alt="NannyPal" width="210" height="40"></picture></a>
   <p style="margin-top:10px">Your plan, in their language.</p>
   <div class="social">
     <a href="mailto:support@getnannypal.app" aria-label="Email support@getnannypal.app" title="support@getnannypal.app"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg></a>
